@@ -68,7 +68,7 @@ const Users = () => {
                                             Authorization: `Bearer ${userData.token}`
                                         }
                                     };
-                                    axios.post('https://live-chat-server-side.vercel.app/api/v1/chat/',
+                                    axios.post('http://localhost:5000/api/v1/chat/',
                                         {
                                             userId: user._id,
                                             name: user.name

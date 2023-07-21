@@ -23,7 +23,7 @@ const CreateGroups = () => {
         };
         let users = [];
         users.push(userData.user._id)
-        axios.post('https://live-chat-server-side.vercel.app/api/v1/chat/group/', {
+        axios.post('http://localhost:5000/api/v1/chat/group/', {
             name: groupName,
             users: [JSON.stringify(users)]
         }, config).then((response) => {

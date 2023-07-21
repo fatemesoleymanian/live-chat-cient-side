@@ -35,7 +35,7 @@ const Chatbar = () => {
                 Authorization: `Bearer ${userData.token}`
             }
         };
-        axios.post('https://live-chat-server-side.vercel.app/api/v1/message/', {
+        axios.post('http://localhost:5000/api/v1/message/', {
             chatId: chatId,
             content: newMessage
         }, config)
@@ -85,7 +85,7 @@ const Chatbar = () => {
                 Authorization: `Bearer ${userData.token}`
             }
         };
-        axios.get(`https://live-chat-server-side.vercel.app/api/v1/message/${chatId}`, config)
+        axios.get(`http://localhost:5000/api/v1/message/${chatId}`, config)
             .then(({ data }) => {
                 setMessages(data)
                 setLoaded(true)
@@ -101,7 +101,7 @@ const Chatbar = () => {
                 Authorization: `Bearer ${userData.token}`
             }
         };
-        axios.put('https://live-chat-server-side.vercel.app/api/v1/chat/leave-group/', {
+        axios.put('http://localhost:5000/api/v1/chat/leave-group/', {
             chatId: chatId,
             userId: userData.user._id
         }, config)

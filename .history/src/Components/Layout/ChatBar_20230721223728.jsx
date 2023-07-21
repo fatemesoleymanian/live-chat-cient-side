@@ -101,7 +101,7 @@ const Chatbar = () => {
                 Authorization: `Bearer ${userData.token}`
             }
         };
-        axios.put('https://live-chat-server-side.vercel.app/api/v1/chat/leave-group/', {
+        axios.put('http://localhost:5000/api/v1/chat/leave-group/', {
             chatId: chatId,
             userId: userData.user._id
         }, config)

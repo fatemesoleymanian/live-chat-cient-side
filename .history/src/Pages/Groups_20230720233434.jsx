@@ -27,7 +27,7 @@ const Groups = () => {
                 Authorization: `Bearer ${userData.token}`
             }
         };
-        axios.get('https://live-chat-server-side.vercel.app/api/v1/chat/groups/', config).then((response) => {
+        axios.get('http://localhost:5000/api/v1/chat/groups/', config).then((response) => {
             setGroups(response.data)
         })
     }, [refresh])
@@ -64,7 +64,7 @@ const Groups = () => {
                                                 Authorization: `Bearer ${userData.token}`
                                             }
                                         };
-                                        axios.put('https://live-chat-server-side.vercel.app/api/v1/chat/add-member/',
+                                        axios.put('http://localhost:5000/api/v1/chat/add-member/',
                                             {
                                                 chatId: group._id,
                                                 userId: userData.user._id

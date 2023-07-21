@@ -38,7 +38,7 @@ const Sidebar = () => {
                 Authorization: `Bearer ${userData.token}`
             }
         };
-        axios.get('https://live-chat-server-side.vercel.app/api/v1/chat/', config).then((response) => {
+        axios.get('http://localhost:5000/api/v1/chat/', config).then((response) => {
             setConversations(response.data)
         })
     }, [refresh]);

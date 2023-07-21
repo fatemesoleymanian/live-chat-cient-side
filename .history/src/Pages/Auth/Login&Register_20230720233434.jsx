@@ -66,7 +66,7 @@ const LoginAndRegister = () => {
             };
 
             const response = await axios.post(
-                "https://live-chat-server-side.vercel.app/api/v1/user/auth/login",
+                "http://localhost:5000/api/v1/user/auth/login",
                 data,
                 config
             );
@@ -97,7 +97,7 @@ const LoginAndRegister = () => {
             };
 
             const response = await axios.post(
-                "https://live-chat-server-side.vercel.app/api/v1/user/auth/register",
+                "http://localhost:5000/api/v1/user/auth/register",
                 data,
                 config
             );

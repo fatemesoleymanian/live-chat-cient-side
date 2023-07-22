@@ -1,15 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import '../../Styles/chatbar.css'
 import '../../Styles/App.css'
-import {
-    Button,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
-    IconButton,
-} from "@mui/material";
+import { IconButton } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send'
 import Skeleton from "@mui/material/Skeleton";

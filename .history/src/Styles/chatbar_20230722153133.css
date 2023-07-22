@@ -161,7 +161,7 @@
     font-weight: lighter;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+/* 
 @media only screen and (max-width:50em) {
     .chatbar-wrapper {
         flex: 1;
@@ -195,4 +195,4 @@
         flex-grow: 1;
         height: 60%;
     }
-}
+} */

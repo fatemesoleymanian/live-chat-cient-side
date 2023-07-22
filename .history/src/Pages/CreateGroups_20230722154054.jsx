@@ -96,10 +96,11 @@ const CreateGroups = () => {
                     }}
                     onKeyDown={(event) => {
                         if (event.code === "Enter") {
-                            handleClickOpen();
+                            // console.log(event);
+                            createGroup()
                         }
                     }} />
-                <IconButton onClick={() => { handleClickOpen(); }}>
+                <IconButton onClick={() => { createGroup() }}>
                     <DoneOutlineRoundedIcon className={(lightTheme ? "" : " dark")} />
                 </IconButton>
             </motion.div>

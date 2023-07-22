@@ -100,8 +100,6 @@
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-    word-wrap: break-word;
-    max-width: 80%;
 }
 
 .other-text-content-dark {
@@ -112,7 +110,6 @@
     display: flex;
     justify-content: flex-end;
     font-weight: normal;
-    margin-right: -5px;
 }
 
 .center-div {
@@ -134,20 +131,14 @@
     margin: 5px;
     border-radius: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    word-wrap: break-word;
-    max-width: 80%;
 
 }
 
 @media only screen and (max-width:900px) {
     .message-box {
         word-wrap: break-word;
-        max-width: 26%;
-    }
-
-    .other-text-content {
-        word-wrap: break-word;
-        max-width: 26%;
+        border: 1px solid red;
+        max-width: 50%;
     }
 }
 
@@ -165,34 +156,6 @@
 @media only screen and (max-width:50em) {
     .chatbar-wrapper {
         flex: 1;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        
-    }
-    .messages-container{
-        flex: 1;
-        width: 35rem;
-        border-radius: 10px;
-        flex-grow: 1;
-        height: 60%;
-    }
-}
-@media only screen and (max-width:40em) {
-    .messages-container{
-        flex: 1;
-        width: 26rem;
-        border-radius: 10px;
-        flex-grow: 1;
-        height: 60%;
-    }
-}
-@media only screen and (max-width:30em) {
-    .messages-container{
-        flex: 1;
-        width: 14rem;
-        border-radius: 10px;
-        flex-grow: 1;
-        height: 60%;
+
     }
 }

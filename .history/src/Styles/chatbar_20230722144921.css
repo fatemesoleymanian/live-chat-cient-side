@@ -63,6 +63,7 @@
     border-radius: 20px;
     flex: 1;
     overflow-y: scroll;
+    max-width: 70%;
     scrollbar-width: none;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
@@ -112,7 +113,6 @@
     display: flex;
     justify-content: flex-end;
     font-weight: normal;
-    margin-right: -5px;
 }
 
 .center-div {
@@ -142,12 +142,12 @@
 @media only screen and (max-width:900px) {
     .message-box {
         word-wrap: break-word;
-        max-width: 26%;
+        max-width: 50%;
     }
 
     .other-text-content {
         word-wrap: break-word;
-        max-width: 26%;
+        max-width: 50%;
     }
 }
 
@@ -165,34 +165,6 @@
 @media only screen and (max-width:50em) {
     .chatbar-wrapper {
         flex: 1;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        
-    }
-    .messages-container{
-        flex: 1;
-        width: 35rem;
-        border-radius: 10px;
-        flex-grow: 1;
-        height: 60%;
-    }
-}
-@media only screen and (max-width:40em) {
-    .messages-container{
-        flex: 1;
-        width: 26rem;
-        border-radius: 10px;
-        flex-grow: 1;
-        height: 60%;
-    }
-}
-@media only screen and (max-width:30em) {
-    .messages-container{
-        flex: 1;
-        width: 14rem;
-        border-radius: 10px;
-        flex-grow: 1;
-        height: 60%;
+
     }
 }

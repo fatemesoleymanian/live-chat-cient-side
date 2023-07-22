@@ -1,15 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import '../../Styles/chatbar.css'
 import '../../Styles/App.css'
-import {
-    Button,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
-    IconButton,
-} from "@mui/material";
+import { IconButton } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send'
 import Skeleton from "@mui/material/Skeleton";
@@ -34,18 +26,7 @@ const Chatbar = () => {
     const { refresh, setRefresh } = useContext(myContext)
     const [socketConnectionStatus, setSocketConnectionStatus] = useState(false)
     const [loaded, setLoaded] = useState(false)
-    const [open, setOpen] = React.useState(false);
-
-
     const navigate = useNavigate()
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
 
     const sendMessage = async () => {
         var data = null;
@@ -131,18 +112,16 @@ const Chatbar = () => {
     }
 
     const lightTheme = useSelector((state) => state.themeKey);
-    // scroll to bottom
+    //scroll to bottom
     useEffect(() => {
-
         if (messages.length > 0) {
-
-            if (divRef.current) {
-
-                const lastChildElement = divRef.current?.lastElementChild;
-                lastChildElement?.scrollIntoView({ behavior: 'smooth' });
-            }
+            divRef.current.scrollHeight({
+                top: document.body.scrollHeight,
+                left: 0,
+                behavior: 'smooth'
+            });
         }
-    }, [loaded, chatId])
+    }, [setMessages])
     const divRef = useRef()
 
 
@@ -174,95 +153,65 @@ const Chatbar = () => {
     }
     else {
         return (
-            <>
-                <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                >
-                    <DialogTitle id="alert-dialog-title">
-                        {"Do you want to clear history/leave group? "}
-                    </DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                            {"This will clear history of a private chat or if it's a Group Chat This causes you leave the group."}
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handleClose}>Disagree</Button>
-                        <Button
-                            onClick={() => {
-                                leaveGroupOclearHistory();
-                                handleClose();
-                            }}
-                            autoFocus
-                        >
-                            Agree
-                        </Button>
-                    </DialogActions>
-                </Dialog>
-                <div className="chatbar-wrapper" >
-                    <div className={"chatarea-header" + (lightTheme ? "" : " dark")}>
-                        <p className={"conv-icon" + (lightTheme ? "" : " dark")}>{chat_user[0]}</p>
-                        <div className={"header-text" + (lightTheme ? "" : " dark")}>
-                            <p className={" conv-title" + (lightTheme ? "" : " dark")}>{chat_user}</p>
+            <div className="chatbar-wrapper" >
+                <div className={"chatarea-header" + (lightTheme ? "" : " dark")}>
+                    <p className={"conv-icon" + (lightTheme ? "" : " dark")}>{chat_user[0]}</p>
+                    <div className={"header-text" + (lightTheme ? "" : " dark")}>
+                        <p className={" conv-title" + (lightTheme ? "" : " dark")}>{chat_user}</p>
 
+                    </div>
+                    <IconButton
+                        onClick={() => { leaveGroupOclearHistory() }}>
+                        <DeleteIcon className={(lightTheme ? "" : " dark")} />
+                    </IconButton>
+                </div>
+                <div className={"messages-container" + (lightTheme ? "" : " dark")}
+                    ref={divRef}>
+
+                    {messages && (
+                        messages.map((message, index) => {
+
+                            if (message.sender._id === userData.user._id) return (
+                                <MyMessages
+                                    key={index}
+                                    name={message.sender.name}
+                                    message={message.content}
+                                    timestamp={message.updatedAt.split('T').pop()}
+                                />)
+                            else return (
+                                <OthersMessages key={index}
+                                    name={message.sender.name}
+                                    message={message.content}
+                                    timestamp={message.updatedAt.split('T').pop()}
+                                />
+                            )
+
+                        })
+                    )}
+                    {
+                        messages.length === 0 && <div class='center-div'>
+                            start chat with {chat_user}!
                         </div>
-                        <IconButton
-                            onClick={() => { handleClickOpen() }}>
-                            <DeleteIcon className={(lightTheme ? "" : " dark")} />
-                        </IconButton>
-                    </div>
-                    <div className={"messages-container" + (lightTheme ? "" : " dark")}
-                        ref={divRef}>
+                    }
 
-                        {messages && (
-                            messages.map((message, index) => {
-
-                                if (message.sender._id === userData.user._id) return (
-                                    <MyMessages
-                                        key={index}
-                                        name={message.sender.name}
-                                        message={message.content}
-                                        timestamp={message.updatedAt.split('T').pop()}
-                                    />)
-                                else return (
-                                    <OthersMessages key={index}
-                                        name={message.sender.name}
-                                        message={message.content}
-                                        timestamp={message.updatedAt.split('T').pop()}
-                                    />
-                                )
-
-                            })
-                        )}
-                        {
-                            messages.length === 0 && <div class='center-div'>
-                                start chat with {chat_user}!
-                            </div>
-                        }
-
-
-                    </div>
-                    <div className={"text-input-area" + (lightTheme ? "" : " dark")}>
-                        <input type="text" placeholder="Type a message"
-                            className={"search-box" + (lightTheme ? "" : " dark")}
-                            onChange={(e) => setNewMessage(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                            value={newMessage}
-                        />
-                        <IconButton onClick={() => {
-                            sendMessage()
-                            setRefresh(!refresh)
-                        }}>
-                            <SendIcon className={(lightTheme ? "" : " dark")} />
-                        </IconButton>
-                    </div>
 
                 </div>
-            </>
-        )
+                <div className={"text-input-area" + (lightTheme ? "" : " dark")}>
+                    <input type="text" placeholder="Type a message"
+                        className={"search-box" + (lightTheme ? "" : " dark")}
+                        onChange={(e) => setNewMessage(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                        value={newMessage}
+                    />
+                    <IconButton onClick={() => {
+                        sendMessage()
+                        setRefresh(!refresh)
+                    }}>
+                        <SendIcon className={(lightTheme ? "" : " dark")} />
+                    </IconButton>
+                </div>
+
+            </div>)
 
     }
 

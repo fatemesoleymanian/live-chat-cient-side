@@ -31,6 +31,6 @@
 @media only screen and (max-width:50em) {
     .App {
         max-height: fit-content;
-        min-width: 100vw;
+        width: 100vw;
     }
 }

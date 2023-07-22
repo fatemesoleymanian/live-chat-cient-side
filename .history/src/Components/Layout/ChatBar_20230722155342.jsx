@@ -126,7 +126,7 @@ const Chatbar = () => {
             userId: userData.user._id
         }, config)
             .then((response) => {
-                navigate('/inbox/welcome')
+                // navigate('/inbox/welcome')
             });
     }
 

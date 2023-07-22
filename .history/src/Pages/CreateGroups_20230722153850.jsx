@@ -52,36 +52,6 @@ const CreateGroups = () => {
 
     return (
         <AnimatePresence>
-            <div>
-                <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                >
-                    <DialogTitle id="alert-dialog-title">
-                        {"Do you want to create a Group Named " + groupName}
-                    </DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                            This will create a create group in which you will be the admin and
-                            other will be able to join this group.
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handleClose}>Disagree</Button>
-                        <Button
-                            onClick={() => {
-                                createGroup();
-                                handleClose();
-                            }}
-                            autoFocus
-                        >
-                            Agree
-                        </Button>
-                    </DialogActions>
-                </Dialog>
-            </div>
             <motion.div initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 1, scale: 1 }}
                 transition={{
@@ -96,10 +66,11 @@ const CreateGroups = () => {
                     }}
                     onKeyDown={(event) => {
                         if (event.code === "Enter") {
-                            handleClickOpen();
+                            // console.log(event);
+                            createGroup()
                         }
                     }} />
-                <IconButton onClick={() => { handleClickOpen(); }}>
+                <IconButton onClick={() => { createGroup() }}>
                     <DoneOutlineRoundedIcon className={(lightTheme ? "" : " dark")} />
                 </IconButton>
             </motion.div>

@@ -142,12 +142,12 @@
 @media only screen and (max-width:900px) {
     .message-box {
         word-wrap: break-word;
-        max-width: 26%;
+        max-width: 40%;
     }
 
     .other-text-content {
         word-wrap: break-word;
-        max-width: 26%;
+        max-width: 40%;
     }
 }
 
@@ -181,7 +181,7 @@
 @media only screen and (max-width:40em) {
     .messages-container{
         flex: 1;
-        width: 26rem;
+        width: 28rem;
         border-radius: 10px;
         flex-grow: 1;
         height: 60%;
@@ -190,7 +190,7 @@
 @media only screen and (max-width:30em) {
     .messages-container{
         flex: 1;
-        width: 14rem;
+        width: 17rem;
         border-radius: 10px;
         flex-grow: 1;
         height: 60%;
